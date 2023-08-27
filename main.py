@@ -3,7 +3,7 @@ import csv
 import sys
 import sqlite3
 import re
-import json
+# import json
 
 line_counter = 0
 delimiter = ""
@@ -73,7 +73,7 @@ with open(sys.argv[1], 'r') as csvfile:
 					cur.executescript(sql_create);
 					table_created = True
 			sql_insert = "INSERT OR IGNORE INTO {} ({})VALUES ({})".format(table_name,columns,insert_values)
-			print(sql_insert)
+			# print(sql_insert)
 			cur.executescript(sql_insert)
 			conn.commit()
 		line_counter += 1
