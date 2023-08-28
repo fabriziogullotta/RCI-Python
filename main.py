@@ -27,7 +27,7 @@ cur = conn.cursor()
 
 sql_drop = "DROP TABLE IF EXISTS {}".format(table_name)
 
-cur.executescript(sql_drop)
+cur.execute(sql_drop)
 
 def is_float(string):
 	try:
@@ -70,10 +70,10 @@ with open(sys.argv[1], 'r') as csvfile:
 						column_type_name = column_type(value)
 						cols += ","+ key + " " + column_type_name
 					sql_create = "CREATE TABLE {} ({})".format(table_name,cols)
-					cur.executescript(sql_create);
+					cur.execute(sql_create);
 					table_created = True
 			sql_insert = "INSERT OR IGNORE INTO {} ({})VALUES ({})".format(table_name,columns,insert_values)
 			# print(sql_insert)
-			cur.executescript(sql_insert)
+			cur.execute(sql_insert)
 			conn.commit()
 		line_counter += 1
